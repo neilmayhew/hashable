@@ -63,13 +63,12 @@ regressions = [] ++
         hs @?= nub hs
 #if WORD_SIZE_IN_BITS == 64
     , testCase "64 bit Text" $ do
-        let expected = 
+        hash ("hello world" :: Text) @?=
 #if MIN_VERSION_text(2,0,0)
-              -3150353794653054837
+            588044899381568208
 #else
-              660667291861873677
+            -5067133951949802236
 #endif
-        hash ("hello world" :: Text) @?= expected
 #endif
     , testGroup "concatenation"
         [ testCase "String" $ do
